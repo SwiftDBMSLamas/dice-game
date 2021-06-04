@@ -7,6 +7,7 @@ author: Allan Aranzaso
 const btnNewGame        = document.getElementById('btn-newGame');
 const btnRollDice       = document.getElementById('btn-rollDice');
 const currentDate       = document.getElementById("dateTime");
+const playerName        = document.getElementById('playerName');
 const prevPage          = document.getElementById("go-back");
 const timeNow           = new Date();
 
@@ -21,7 +22,8 @@ prevPage.addEventListener('click', function(){
 });
 
 btnNewGame.addEventListener('click', function(){
-    alert('Not implemented yet');
+    let nameOfPlayerPrompt = window.prompt("Enter your name");
+    playerName.innerHTML = nameOfPlayerPrompt;
 });
 
 btnRollDice.addEventListener('click', function(){
