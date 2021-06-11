@@ -1,10 +1,9 @@
-/* reset */
-@import url("reset.css");
+@charset "utf-8";
 
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-}
+};
 * {
     box-sizing: inherit;
 }
