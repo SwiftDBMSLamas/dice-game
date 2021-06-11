@@ -35,25 +35,28 @@
         <section class="player-panel">
             <div class="player-name" id="playerName">Player 1</div>
             <div class="player-score" id="playerScore">0</div>
+            <div class="player-finalScore" id='playerFinalScore'>0</div>
         </section>
-
+        <div id="gameOver-pop-up">
+            <div>
+                <button id="close-pop-up">&#x2715</button>
+                <h2 id="gameOver-winner-h2">And the winner is...</h2>
+                <button id="btn-playAgain">Play Again</button>
+            </div>
+        </div>
         <section class="computer-panel">
             <div class="player-name" id="compName">Computer</div>
             <div class="player-score" id="compScore">0</div>
+            <div class="player-finalScore" id="compFinalScore">0</div>
         </section>
         <div id="buttons">
             <button id="btn-newGame">New Game</button>
-        <button id="btn-rollDice">Roll Dice</button>
+        <button id="btn-rollDice" disabled>Roll Dice</button>
         </div>
         
     </main>
     
-    <!-- <i class="fas fa-dice-one"></i>
-    <i class="fas fa-dice-two"></i>
-    <i class="fas fa-dice-three"></i>
-    <i class="fas fa-dice-four"></i>
-    <i class="fas fa-dice-five"></i>
-    <i class="fas fa-dice-six"></i> -->
+    
     <footer>
 
         <ul>

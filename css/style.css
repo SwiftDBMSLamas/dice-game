@@ -237,7 +237,7 @@ nav a:active{
     font-family: var(--font-header);
     font-size: 5em;
 }
-.player-score {
+.player-score, .player-finalScore {
     font-family: inherit;
     font-size: 5em;
 }
@@ -258,6 +258,54 @@ nav a:active{
      flex-direction: column;
     
  }
+
+ #gameOver-pop-up{
+     position: fixed;
+     top: 0px;
+     left: 0px;
+     width: 100vw;
+     height: 100vh;
+     z-index:1000;
+     background-color: rgba(0, 0, 0, 0.705);   
+ }
+
+ #gameOver-pop-up div{
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     transform:translate(-50%, -50%);
+
+     /* basic box model stuff*/
+	max-width:500px;
+	min-width:300px;
+	padding:10px;
+	border-radius:10px;
+	box-shadow: 0 0 0 2px rgb(145, 197, 199),
+		        0 0 0 4px cadetblue, 
+				0 0 0 8px rgb(39, 103, 105);;
+	background-color: cadetblue;
+	color:white;
+ }
+
+ #close-pop-up{
+	background-color: white;
+	color:cadetblue;
+	color: #000;
+	font-weight: bold;
+	border:solid 3px rgb(39, 103, 105);
+	/*
+	make a 'hand' pointer icon appear on mouseover
+	otherwise it will just be the usual mouse cursor arrow
+	*/
+	cursor:pointer;
+	/*
+	stick this X button in the 
+	top right corner of the popup
+	*/
+	position:absolute;
+	top:-380px;
+	right:-380px;
+}
 
  #go-back {
     display: block;
