@@ -5,8 +5,11 @@ author: Allan Aranzaso
 */
 
 /* 
-    todo: add animation
+    todo: add animation (popup & dice)
     add 6 images (dice)
+    show dice 1 and 2 for each player
+    make another table to show score this round and total score
+    click roll dice each time to play a round?
 */
 //gather document elements
 const btnNewGame        = document.getElementById('btn-newGame');
