@@ -34,8 +34,20 @@
         
         <section class="player-panel">
             <div class="player-name" id="playerName">Player 1</div>
-            <div class="player-score" id="playerScore">0</div>
-            <div class="player-finalScore" id='playerFinalScore'>0</div>
+            <!-- create flex box and arrange into a square? -->
+            <div class="scoreBox"> 
+                <div class="rollBox">
+                    You rolled...
+                    <img src="images/dice1.png" alt="value is 1" id="dice1" />
+                    <img src="images/dice2.png" alt="value is 2" id="dice2" />
+                </div>
+            </div>
+            <div class="scoreBox">
+                <div>Score this round:</div>
+                <div class="player-score" id="playerScore">0</div>
+                <div>Total score:</div>
+                <div class="player-finalScore" id='playerFinalScore'>0</div>
+            </div>
         </section>
         <div id="gameOver-pop-up">
             <div>
@@ -46,12 +58,21 @@
         </div>
         <section class="computer-panel">
             <div class="player-name" id="compName">Computer</div>
-            <div class="player-score" id="compScore">0</div>
-            <div class="player-finalScore" id="compFinalScore">0</div>
+            <div class="scoreBox">
+                <div class="rollBox">
+                    You rolled...
+                    <img src="images/dice1.png" alt="value is 1" id="dice1" />
+                    <img src="images/dice2.png" alt="value is 2" id="dice2" />
+                </div>
+                <div>Score this round:</div>
+                <div class="player-score" id="compScore">0</div>
+                <div>Total score:</div>
+                <div class="player-finalScore" id="compFinalScore">0</div>
+            </div>
         </section>
         <div id="buttons">
             <button id="btn-newGame">New Game</button>
-        <button id="btn-rollDice" disabled>Roll Dice</button>
+            <button id="btn-rollDice" disabled>Roll Dice</button>
         </div>
         
     </main>

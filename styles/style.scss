@@ -1,20 +1,8 @@
 @charset "utf-8";
 
-// Variables
-// Font Families
-$fontHeader: 'Open Sans', Helvetica, sans-serif;
-$fontFooter: 'Open Sans', Helvetica, sans-serif;
-$fontBody: 'Ubuntu', Baskerville, sans-serif;
-
-// Colours
-$main-bg: #2B303A;
-$nav-bg-color: #898686;
-$font-color: #000;
-$nav-font-color: #000;
-$transparent-bg: rgba(0,0,0,.2);
-$box-bg-color: #00C7BE;
-$nav-border: 1px solid #273043;
-$footer-bg-color: #898686;
+@import "variables.scss";
+//todo: fix score box and text
+// find better background and nav bar colours
 
 html {
     box-sizing: border-box;
@@ -39,7 +27,7 @@ html {
 }
 
 
-header{
+header {
     font-family: $fontHeader;
     background: $main-bg;
 
@@ -48,56 +36,61 @@ header{
 
     display: flex;
     flex-flow: column nowrap;
+
+    ul {
+        li {
+            list-style-type: none; 
+        }
+    }
 }
-header ul li{
-    list-style-type: none;
-}
-/*  -----------------
-    nav header design
-    -----------------
-*/
-nav{
+
+
+//  -----------------
+//   nav header design
+//  -----------------
+
+nav {
+    background-color: $nav-bg-color;
     color: $nav-font-color;
+    height: 42px;
     display: none;
     clear: both;
     text-align: center;
     justify-content: center;
-}
-nav p{
-     background-color: $nav-bg-color;
 
-     text-decoration: none;
-     text-align: right;
-     /* resize */
-     width: 100%;
-     height: 60px;
-     display: block;
+    p {
+      text-decoration: none;
+      text-align: right;
 
-     /* fix text */
-     padding-top: 25px;
-     padding-left: 8px;
-}
-nav ul{
-     display: flex;
-     flex-flow: column nowrap;
-     width: 100%;
-     align-items: center;
-     list-style-type: none;
-     padding: 0px;
-     margin: 0px;
-}
-nav a{
-     display: block;
+    // resize
+      width: 100%;
+
+      display: block;
+    }
+
+    ul {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        align-items: center;
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    a {
+        display: block;
+    }
 }
 
-/*  --------------------------
-    Start main body designs
-    --------------------------
-*/
+
+//  --------------------------
+//   Start main body designs
+//  --------------------------
 h1 {
     text-align: center;
 }
-footer{
+footer {
     font-family: $fontFooter;
     background-color: $footer-bg-color;
     opacity: 0.8;
@@ -108,55 +101,60 @@ footer{
     left: 0;
     bottom: 0;
     width: 100%;
+
+    h3 {
+        font-size: 1.25rem;
+        padding-left: 1px;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    i {
+        margin: 8px;
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+
+        li {
+            list-style-type: none;
+            margin-bottom: 10px;
+            padding-right: 5px;
+        }
+    }
 }
-footer h3{
-    font-size: 1.25rem;
-    padding-left: 1px;
-}
-footer ul{
-    display: flex;
-    justify-content: center;
-}
-footer ul li{
-    list-style-type: none;
-    margin-bottom: 10px;
-    padding-right: 5px;
-}
-footer p{
-    font-size: 1.5em;
-}
-footer i{
-    margin: 8px;
-}
-body{
+body {
     margin: 0px;
     background: $main-bg;
     color: $font-color;
 }
-main{
+main {
     font-family: $fontBody;
 
 	display:flex;
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* width: 100%; */
+    
     min-height:80vh;
-}
-main button {
-    display: block;
-    border-radius: 34px;
-    background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
-    border: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 22px;
-    padding: 20px;
-    width: 200px;
-    margin: 5px;
-}
 
-section{
+    button {
+        display: block;
+        border-radius: 34px;
+        background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
+        border: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 22px;
+        padding: 20px;
+        width: 200px;
+        margin: 5px;
+    }
+}
+section {
     background: linear-gradient(to right, $box-bg-color, #7880b5);
     background-color: var(--box-bg-color);
     font-family: var(--font-body);
@@ -166,69 +164,68 @@ section{
     justify-content: space-around;
     margin: 10px;
     padding: 10px;
+    height:600px;
     text-align: left;
     width: 48.1%;
     border-radius: 20px;
+
+    ul {
+        line-height: 1.5; 
+    }
+
+    img {
+        max-width: 40%;
+        height: auto;
+    }
 }
-section ul{
+p {
     line-height: 1.5;
 }
-p{
-    line-height: 1.5;
-    /* max-width: 1100px; */
-}
-img{
+img {
 	max-width: 100%;
 	height: auto;
 }
-section img{
-    max-width: 40%;
-    height: auto;
-    float: left;
-}
-
-button{
+button {
     cursor: pointer;
 }
 
 
-/* 
------------------------------
-        pseudo-class
------------------------------
- */
-nav a:link, nav a:visited{
+ 
+//-----------------------------
+//        pseudo-class
+//-----------------------------
+
+nav a:link, nav a:visited {
     text-decoration: none;
  }
-nav a:hover{
+nav a:hover {
     transform: scale(1.1);
     color: #829399;
  }
-nav li:hover{
+nav li:hover {
     background-color: #FE6D73;
  }
-nav a:active{
+nav a:active {
     filter: brightness(1.5);
  }
- a:link{
+ a:link {
      text-decoration: none;
      color: inherit;
  }
- a:visited{
+ a:visited {
      color: inherit;
  }
- a:hover{
+ a:hover {
      color:#fff;
  }
- a:active{
+ a:active {
      text-decoration: inherit;
  }
 
- /* 
------------------------------
-        class selectors
------------------------------
- */
+
+//-----------------------------
+//        class selectors
+//-----------------------------
 
 .player-name {
     font-family: var(--font-header);
@@ -238,6 +235,17 @@ nav a:active{
     font-family: inherit;
     font-size: 5em;
 }
+.scoreBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+    border: $nav-border;
+}
+.rollBox {
+    display: flex;
+    align-items: center;
+}
 
 /* 
 -----------------------------
@@ -245,7 +253,7 @@ nav a:active{
 -----------------------------
  */
 
- #wrapper{
+ #wrapper {
 	max-width:100%;
 	min-height:70vh;
  }
@@ -253,10 +261,12 @@ nav a:active{
  #buttons {
      display: flex;
      flex-direction: column;
-    
+     position: absolute;
+     right: 525px;
+     top: 550px;
  }
 
- #gameOver-pop-up{
+ #gameOver-pop-up {
      position: fixed;
      top: 0px;
      left: 0px;
@@ -264,41 +274,35 @@ nav a:active{
      height: 100vh;
      z-index:1000;
      background-color: rgba(0, 0, 0, 0.705);   
+
+     div {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform:translate(-50%, -50%);
+   
+       
+        max-width:500px;
+        min-width:300px;
+        padding:10px;
+        border-radius:10px;
+        box-shadow: 0 0 0 2px rgb(145, 197, 199),
+                    0 0 0 4px cadetblue, 
+                    0 0 0 8px rgb(39, 103, 105);;
+        background-color: cadetblue;
+        color:white;
+     }
  }
 
- #gameOver-pop-up div{
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     transform:translate(-50%, -50%);
-
-     /* basic box model stuff*/
-	max-width:500px;
-	min-width:300px;
-	padding:10px;
-	border-radius:10px;
-	box-shadow: 0 0 0 2px rgb(145, 197, 199),
-		        0 0 0 4px cadetblue, 
-				0 0 0 8px rgb(39, 103, 105);;
-	background-color: cadetblue;
-	color:white;
- }
-
- #close-pop-up{
+ #close-pop-up {
 	background-color: white;
 	color:cadetblue;
 	color: #000;
 	font-weight: bold;
 	border:solid 3px rgb(39, 103, 105);
-	/*
-	make a 'hand' pointer icon appear on mouseover
-	otherwise it will just be the usual mouse cursor arrow
-	*/
+
 	cursor:pointer;
-	/*
-	stick this X button in the 
-	top right corner of the popup
-	*/
+
 	position:absolute;
 	top:-380px;
 	right:-380px;
@@ -309,6 +313,7 @@ nav a:active{
 	background-color: #898686;
     border: none;
     font-size: 2em;
+    height:40px;
  }
  /* 
  -----------------------------

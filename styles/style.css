@@ -1,10 +1,12 @@
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
 * {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 .show {
@@ -28,44 +30,50 @@ header {
   background: #2B303A;
   margin: 0px;
   padding: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
 }
 
 header ul li {
   list-style-type: none;
 }
 
-/*  -----------------
-    nav header design
-    -----------------
-*/
 nav {
+  background-color: #898686;
   color: #000;
+  height: 42px;
   display: none;
   clear: both;
   text-align: center;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 nav p {
-  background-color: #898686;
   text-decoration: none;
   text-align: right;
-  /* resize */
   width: 100%;
-  height: 60px;
   display: block;
-  /* fix text */
-  padding-top: 25px;
-  padding-left: 8px;
 }
 
 nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
   width: 100%;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   list-style-type: none;
   padding: 0px;
   margin: 0px;
@@ -75,10 +83,6 @@ nav a {
   display: block;
 }
 
-/*  --------------------------
-    Start main body designs
-    --------------------------
-*/
 h1 {
   text-align: center;
 }
@@ -87,9 +91,15 @@ footer {
   font-family: "Open Sans", Helvetica, sans-serif;
   background-color: #898686;
   opacity: 0.8;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -101,23 +111,27 @@ footer h3 {
   padding-left: 1px;
 }
 
-footer ul {
-  display: flex;
-  justify-content: center;
-}
-
-footer ul li {
-  list-style-type: none;
-  margin-bottom: 10px;
-  padding-right: 5px;
-}
-
 footer p {
   font-size: 1.5em;
 }
 
 footer i {
   margin: 8px;
+}
+
+footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer ul li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding-right: 5px;
 }
 
 body {
@@ -128,17 +142,24 @@ body {
 
 main {
   font-family: "Ubuntu", Baskerville, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  /* width: 100%; */
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   min-height: 80vh;
 }
 
 main button {
   display: block;
   border-radius: 34px;
+  background: -webkit-gradient(linear, left top, right top, from(#67b26b), to(#4ca2cb)) !important;
   background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
   border: none;
   text-align: center;
@@ -150,15 +171,25 @@ main button {
 }
 
 section {
+  background: -webkit-gradient(linear, left top, right top, from(#00C7BE), to(#7880b5));
   background: linear-gradient(to right, #00C7BE, #7880b5);
   background-color: var(--box-bg-color);
   font-family: var(--font-body);
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column wrap;
-  justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   margin: 10px;
   padding: 10px;
+  height: 600px;
   text-align: left;
   width: 48.1%;
   border-radius: 20px;
@@ -168,9 +199,13 @@ section ul {
   line-height: 1.5;
 }
 
+section img {
+  max-width: 40%;
+  height: auto;
+}
+
 p {
   line-height: 1.5;
-  /* max-width: 1100px; */
 }
 
 img {
@@ -178,27 +213,17 @@ img {
   height: auto;
 }
 
-section img {
-  max-width: 40%;
-  height: auto;
-  float: left;
-}
-
 button {
   cursor: pointer;
 }
 
-/* 
------------------------------
-        pseudo-class
------------------------------
- */
 nav a:link, nav a:visited {
   text-decoration: none;
 }
 
 nav a:hover {
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   color: #829399;
 }
 
@@ -207,7 +232,8 @@ nav li:hover {
 }
 
 nav a:active {
-  filter: brightness(1.5);
+  -webkit-filter: brightness(1.5);
+          filter: brightness(1.5);
 }
 
 a:link {
@@ -227,11 +253,6 @@ a:active {
   text-decoration: inherit;
 }
 
-/* 
------------------------------
-        class selectors
------------------------------
- */
 .player-name {
   font-family: var(--font-header);
   font-size: 5em;
@@ -240,6 +261,29 @@ a:active {
 .player-score, .player-finalScore {
   font-family: inherit;
   font-size: 5em;
+}
+
+.scoreBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 60%;
+  border: 1px solid #273043;
+}
+
+.rollBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /* 
@@ -253,8 +297,16 @@ a:active {
 }
 
 #buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  right: 525px;
+  top: 550px;
 }
 
 #gameOver-pop-up {
@@ -271,13 +323,14 @@ a:active {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  /* basic box model stuff*/
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   max-width: 500px;
   min-width: 300px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 0 2px #91c5c7, 0 0 0 4px cadetblue, 0 0 0 8px #276769;
+  -webkit-box-shadow: 0 0 0 2px #91c5c7, 0 0 0 4px cadetblue, 0 0 0 8px #276769;
+          box-shadow: 0 0 0 2px #91c5c7, 0 0 0 4px cadetblue, 0 0 0 8px #276769;
   background-color: cadetblue;
   color: white;
 }
@@ -288,15 +341,7 @@ a:active {
   color: #000;
   font-weight: bold;
   border: solid 3px #276769;
-  /*
-	make a 'hand' pointer icon appear on mouseover
-	otherwise it will just be the usual mouse cursor arrow
-	*/
   cursor: pointer;
-  /*
-	stick this X button in the 
-	top right corner of the popup
-	*/
   position: absolute;
   top: -380px;
   right: -380px;
@@ -307,6 +352,7 @@ a:active {
   background-color: #898686;
   border: none;
   font-size: 2em;
+  height: 40px;
 }
 
 /* 
@@ -319,10 +365,15 @@ a:active {
     display: none;
   }
   nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
   nav ul {
-    flex-flow: row nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
   }
   section img {
     max-width: 25%;
