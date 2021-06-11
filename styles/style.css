@@ -23,27 +23,9 @@ html {
   right: 6px;
 }
 
-/* Global variables */
-:root {
-  /* Font families */
-  --font-header: 'Open Sans', Helvetica, sans-serif;
-  --font-footer: 'Open Sans', Helvetica, sans-serif;
-  --font-body: 'Ubuntu', Baskerville, sans-serif;
-  /* colours */
-  --main-bg: lightblue;
-  --nav-bg-color: #898686;
-  --font-color: #000;
-  --nav-font-color: #000;
-  --transparent-bg: rgba(0, 0, 0, 0.2);
-  --box-bg-color: #EFF6EE;
-  --nav-border: 1px solid #273043;
-  --footer-bg-color: #898686;
-  /* colours for this project: #273043 #9197AE #EFF6EE #FE6D73 #FF663 */
-}
-
 header {
-  font-family: var(--font-header);
-  background: var(--main-bg);
+  font-family: "Open Sans", Helvetica, sans-serif;
+  background: #2B303A;
   margin: 0px;
   padding: 0px;
   display: flex;
@@ -59,7 +41,7 @@ header ul li {
     -----------------
 */
 nav {
-  color: var(--nav-font-color);
+  color: #000;
   display: none;
   clear: both;
   text-align: center;
@@ -67,7 +49,7 @@ nav {
 }
 
 nav p {
-  background-color: var(--nav-bg-color);
+  background-color: #898686;
   text-decoration: none;
   text-align: right;
   /* resize */
@@ -102,8 +84,8 @@ h1 {
 }
 
 footer {
-  font-family: var(--font-footer);
-  background-color: var(--footer-bg-color);
+  font-family: "Open Sans", Helvetica, sans-serif;
+  background-color: #898686;
   opacity: 0.8;
   display: flex;
   justify-content: space-between;
@@ -140,12 +122,12 @@ footer i {
 
 body {
   margin: 0px;
-  background: var(--main-bg);
-  color: var(--font-color);
+  background: #2B303A;
+  color: #000;
 }
 
 main {
-  font-family: var(--font-body);
+  font-family: "Ubuntu", Baskerville, sans-serif;
   display: flex;
   align-items: stretch;
   flex-wrap: wrap;
@@ -168,7 +150,7 @@ main button {
 }
 
 section {
-  background: linear-gradient(to right, #C83E4D, #C6B9CD);
+  background: linear-gradient(to right, #00C7BE, #7880b5);
   background-color: var(--box-bg-color);
   font-family: var(--font-body);
   align-items: center;

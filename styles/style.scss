@@ -1,5 +1,21 @@
 @charset "utf-8";
 
+// Variables
+// Font Families
+$fontHeader: 'Open Sans', Helvetica, sans-serif;
+$fontFooter: 'Open Sans', Helvetica, sans-serif;
+$fontBody: 'Ubuntu', Baskerville, sans-serif;
+
+// Colours
+$main-bg: #2B303A;
+$nav-bg-color: #898686;
+$font-color: #000;
+$nav-font-color: #000;
+$transparent-bg: rgba(0,0,0,.2);
+$box-bg-color: #00C7BE;
+$nav-border: 1px solid #273043;
+$footer-bg-color: #898686;
+
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -21,29 +37,11 @@ html {
     top: 5px;
 	right: 6px;
 }
-/* Global variables */
-:root{
-    /* Font families */
-    --font-header: 'Open Sans', Helvetica, sans-serif;
-    --font-footer: 'Open Sans', Helvetica, sans-serif;
-    --font-body: 'Ubuntu', Baskerville, sans-serif;
 
-    /* colours */
-    --main-bg: lightblue;
-    --nav-bg-color: #898686;
-    --font-color: #000;
-    --nav-font-color: #000;
-    --transparent-bg: rgba(0,0,0,.2);
-    --box-bg-color: #EFF6EE;
-    --nav-border: 1px solid #273043;
-    --footer-bg-color: #898686;
-
-    /* colours for this project: #273043 #9197AE #EFF6EE #FE6D73 #FF663 */
-}
 
 header{
-    font-family: var(--font-header);
-    background: var(--main-bg);
+    font-family: $fontHeader;
+    background: $main-bg;
 
     margin: 0px;
     padding: 0px;
@@ -59,14 +57,14 @@ header ul li{
     -----------------
 */
 nav{
-    color: var(--nav-font-color);
+    color: $nav-font-color;
     display: none;
     clear: both;
     text-align: center;
     justify-content: center;
 }
 nav p{
-     background-color: var(--nav-bg-color);
+     background-color: $nav-bg-color;
 
      text-decoration: none;
      text-align: right;
@@ -100,8 +98,8 @@ h1 {
     text-align: center;
 }
 footer{
-    font-family: var(--font-footer);
-    background-color: var(--footer-bg-color);
+    font-family: $fontFooter;
+    background-color: $footer-bg-color;
     opacity: 0.8;
     display: flex;
     justify-content: space-between;
@@ -132,11 +130,11 @@ footer i{
 }
 body{
     margin: 0px;
-    background: var(--main-bg);
-    color: var(--font-color);
+    background: $main-bg;
+    color: $font-color;
 }
 main{
-    font-family: var(--font-body);
+    font-family: $fontBody;
 
 	display:flex;
     align-items: stretch;
@@ -159,7 +157,7 @@ main button {
 }
 
 section{
-    background: linear-gradient(to right, #C83E4D, #C6B9CD);
+    background: linear-gradient(to right, $box-bg-color, #7880b5);
     background-color: var(--box-bg-color);
     font-family: var(--font-body);
     align-items: center;
