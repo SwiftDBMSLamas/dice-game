@@ -27,7 +27,7 @@ html {
 
 header {
   font-family: "Open Sans", Helvetica, sans-serif;
-  background: #2B303A;
+  background: #212936;
   margin: 0px;
   padding: 0px;
   display: -webkit-box;
@@ -101,9 +101,8 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  width: 1024px;
+  margin: auto;
 }
 
 footer h3 {
@@ -135,9 +134,10 @@ footer ul li {
 }
 
 body {
-  margin: 0px;
-  background: #2B303A;
+  margin: auto;
+  background: #212936;
   color: #000;
+  max-width: 1024px;
 }
 
 main {
@@ -153,14 +153,14 @@ main {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 
 main button {
   display: block;
   border-radius: 34px;
-  background: -webkit-gradient(linear, left top, right top, from(#67b26b), to(#4ca2cb)) !important;
-  background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
+  background: -webkit-gradient(linear, left top, right top, from(#2B3648), to(#56657F)) !important;
+  background: linear-gradient(to right, #2B3648, #56657F) !important;
   border: none;
   text-align: center;
   text-transform: uppercase;
@@ -171,9 +171,7 @@ main button {
 }
 
 section {
-  background: -webkit-gradient(linear, left top, right top, from(#00C7BE), to(#7880b5));
-  background: linear-gradient(to right, #00C7BE, #7880b5);
-  background-color: var(--box-bg-color);
+  background-color: #2B3648;
   font-family: var(--font-body);
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -187,12 +185,9 @@ section {
           flex-flow: column wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin: 10px;
   padding: 10px;
-  height: 600px;
   text-align: left;
-  width: 48.1%;
-  border-radius: 20px;
+  width: 50%;
 }
 
 section ul {
@@ -253,6 +248,28 @@ a:active {
   text-decoration: inherit;
 }
 
+#buttons button:hover, #buttons button:focus {
+  color: white;
+  -webkit-animation: pulse 1s;
+          animation: pulse 1s;
+  -webkit-box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+          box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #ef8f6e;
+            box-shadow: 0 0 0 0 #ef8f6e;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #ef8f6e;
+            box-shadow: 0 0 0 0 #ef8f6e;
+  }
+}
+
 .player-name {
   font-family: var(--font-header);
   font-size: 5em;
@@ -260,7 +277,7 @@ a:active {
 
 .player-score, .player-finalScore {
   font-family: inherit;
-  font-size: 5em;
+  font-size: 3em;
 }
 
 .scoreBox {
@@ -273,7 +290,7 @@ a:active {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 60%;
+  width: 65%;
   border: 1px solid #273043;
 }
 
@@ -284,6 +301,15 @@ a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.computer-panel {
+  background-color: #56657F;
 }
 
 /* 
@@ -304,9 +330,8 @@ a:active {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: absolute;
-  right: 525px;
-  top: 550px;
+  position: fixed;
+  top: 600px;
 }
 
 #gameOver-pop-up {

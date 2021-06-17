@@ -6,10 +6,8 @@ author: Allan Aranzaso
 
 /* 
     todo: add animation (popup & dice)
-    add 6 images (dice)
-    show dice 1 and 2 for each player
-    make another table to show score this round and total score
-    click roll dice each time to play a round?
+    fix tables to look better
+    add toggle animation for help?
 */
 //gather document elements
 const btnNewGame        = document.getElementById('btn-newGame');
@@ -25,11 +23,19 @@ const compScore         = document.getElementById('compScore');
 const prevPage          = document.getElementById("go-back");
 const popup             = document.getElementById('gameOver-pop-up');
 const popupWinner       = document.getElementById('gameOver-winner-h2');
+const diceImg1          = document.getElementById('dice1');
+const diceImg2          = document.getElementById('dice2');
+const diceImgComp1      = document.getElementById('dice3');
+const diceImgComp2      = document.getElementById('dice4');
 const timeNow           = new Date();
 const diceDelay         = 1500;
 const maxVal            = 6;
 const defaultScore      = 0;
 const lastRound         = 3;
+const fadeDelay         = 50;
+const minOpacity        = 0.1;
+const maxOpacity        = 1;
+const opacityFactor     = 0.1;
 
 currentDate.innerHTML += `${timeNow.toDateString()}`;
 // hides the popup until game is over
@@ -46,14 +52,16 @@ let playerTurn = true;
 let totalScore = 0;
 let compTotalScore = 0;
 let turnInterval;
+let opaque = 0.1;
+let opFadeOut = 1;
 
 class Dice {
     constructor(){
-        this.value  = Math.round(Math.random() * 6) + 1;
-        //todo: add images
+        this.value  = Math.floor(Math.random() * 6) + 1;
     }
 }
-
+let getRoll = 0;
+let get2Roll = 0;
 class Player {
     constructor( name ){
         this.name = name;
@@ -61,10 +69,14 @@ class Player {
     rollDice( firstRoll, secondRoll ){
         
         let score = getScore(firstRoll, secondRoll);
-
+        diceImg1.src = `images/dice${firstRoll.value}.png`;
+        diceImg2.src = `images/dice${secondRoll.value}.png`;
+        getRoll = getFirstRoll(firstRoll);
+        get2Roll = get2ndRoll(secondRoll);
         playerScore.textContent = score;
 
         totalScore += score;
+        
         playerFinalScore.textContent = totalScore;
 
         playerTurn = false;
@@ -80,6 +92,8 @@ class Computer {
     rollDice( firstRoll, secondRoll ){
 
         let score = getScore(firstRoll, secondRoll);
+        diceImgComp1.src = `images/dice${firstRoll.value}.png`;
+        diceImgComp2.src = `images/dice${secondRoll.value}.png`;
 
         //display current rolled dice score
         compScore.textContent = score;
@@ -113,6 +127,7 @@ function getScore( firstRoll, secondRoll ){
     let roll2    = secondRoll.value;
     //todo: add a result if it's a tie
     if( roll1 === 1 || roll2 === 1){
+        
         score = defaultScore;
     }else if( roll1 === roll2 ){
         score = (roll1 + roll2) * 2;
@@ -122,10 +137,21 @@ function getScore( firstRoll, secondRoll ){
     return score;
 }
 
+function getFirstRoll(firstRoll) {
+    let retVal = firstRoll.value;
+    return retVal;
+}
+function get2ndRoll(secondRoll) {
+    return secondRoll.value;
+}
+
 function getWinner() {
+    fadeIn();
     popup.style.display = 'block';
     if(compFinalScore.textContent > playerFinalScore.textContent){
         popupWinner.textContent = "Computer wins!";
+    }else if(compFinalScore.textContent === playerFinalScore.textContent){
+        popupWinner.textContent = "Tie!";
     }else{
         popupWinner.textContent = `${playerName.textContent} wins!`;
     }
@@ -158,6 +184,12 @@ btnNewGame.addEventListener('click', function(){
 });
 
 btnRollDice.addEventListener('click', function(){
+
+    // timeoutHandler = setTimeout(() => {
+    //     console.log('in!')
+    //     diceAnimHandler = requestAnimationFrame( shuffleDice );
+    // },100);
+
     // if for any reason the obj is undefined.. alert the user
     if(humanPlayer === undefined){
         alert('Please click new game first!');
@@ -166,25 +198,50 @@ btnRollDice.addEventListener('click', function(){
     btnNewGame.disabled = false;
     btnNewGame.textContent = "Reset Game";
     btnNewGame.style.cursor = "pointer";
-    
-    takeTurns();
+
+    // turnInterval = setInterval(() => {
+    //     clearTimeout(timeoutHandler);
+    //     diceImg1.src = `images/dice${getRoll}.png`;
+    //     diceImg2.src = `images/dice${get2Roll}.png`;
+    // }, 3000);
+    takeTurns(); 
 });
 
 btnPlayAgain.addEventListener('click', function(){
+    fadeOut(100);
     popup.style.display = 'none';
     resetTheGame();
-
 });
 
 btnClosePopUp.addEventListener('click', function(){
+    fadeOut();
     popup.style.display = 'none';
-    clearInterval(turnInterval);
+    // clearInterval(turnInterval);
+    
 });
+let currentDiceNumber = 0;
+function shuffleDice(){
+    currentDiceNumber++;
+    if(currentDiceNumber > 6){
+        currentDiceNumber = 1;
+    }
+    if(playerTurn){
+        diceImg1.src = `images/dice${currentDiceNumber}.png`;
+        diceImg2.src = `images/dice${currentDiceNumber}.png`; 
+    }else if(computerTurn){
+        diceImgComp1.src = `images/dice${currentDiceNumber}.png`; 
+        diceImgComp2.src = `images/dice${currentDiceNumber}.png`; 
+    }
+    
 
-
+    timeoutHandler = setTimeout(function() {
+        diceAnimHandler = requestAnimationFrame( shuffleDice );
+    }, 100);
+}
+let timeoutHandler;
 function takeTurns(){
     
-    turnInterval = setInterval(() => {
+    
         
         let firstDie = new Dice();
         let secondDie = new Dice();
@@ -193,10 +250,10 @@ function takeTurns(){
 
         if(playerTurn){
             humanPlayer.rollDice(firstDie, secondDie);
+            
         }else if(computerTurn){
             computerPlayer.rollDice(thirdDie, fourthDie);
         }
-    }, diceDelay);
 };
 
 // Reset the game to default values
@@ -206,10 +263,11 @@ function resetTheGame(){
     compFinalScore.textContent = defaultScore;
     playerScore.textContent = defaultScore;
     compScore.textContent = defaultScore;
+    playerName.textContent = "Player 1";
     playerTurn = true;
     btnNewGame.textContent = "New Game";
 
-    clearInterval(turnInterval);
+    // clearInterval(turnInterval);
 };
 
 prevPage.addEventListener('click', function(){
@@ -218,3 +276,28 @@ prevPage.addEventListener('click', function(){
         history.back();
     }
 });
+
+//allows popup to fade in
+function fadeIn(customDelay = fadeDelay){
+    let intervalPopupHndlr;
+    intervalPopupHndlr = setInterval(() => {
+        if(opaque >= maxOpacity) {
+            clearInterval(intervalPopupHndlr);
+        }
+        popup.style.opacity = opaque;
+        opaque += opaque * opacityFactor;
+    }, customDelay);
+}
+
+//allows popup to fade out
+function fadeOut(customDelay = fadeDelay){
+    let intervalBtnCloseHndlr;
+    intervalBtnCloseHndlr = setInterval(() => {
+        if(opFadeOut <= minOpacity) {
+            clearInterval(intervalBtnCloseHndlr);
+            popup.style.display = "none";
+        }
+        popup.style.opacity = opFadeOut;
+        opFadeOut -= opFadeOut * opacityFactor;
+    }, customDelay);
+}

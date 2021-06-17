@@ -3,6 +3,7 @@
 @import "variables.scss";
 //todo: fix score box and text
 // find better background and nav bar colours
+// create a mixin
 
 html {
     box-sizing: border-box;
@@ -98,9 +99,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    width: 1024px;
+    margin: auto;
 
     h3 {
         font-size: 1.25rem;
@@ -127,9 +127,10 @@ footer {
     }
 }
 body {
-    margin: 0px;
+    margin: auto;
     background: $main-bg;
     color: $font-color;
+    max-width: 1024px;
 }
 main {
     font-family: $fontBody;
@@ -139,12 +140,12 @@ main {
     flex-wrap: wrap;
     justify-content: space-evenly;
     
-    min-height:80vh;
+    min-height:90vh;
 
     button {
         display: block;
         border-radius: 34px;
-        background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
+        background: linear-gradient(to right, #2B3648, #56657F) !important;
         border: none;
         text-align: center;
         text-transform: uppercase;
@@ -155,19 +156,16 @@ main {
     }
 }
 section {
-    background: linear-gradient(to right, $box-bg-color, #7880b5);
-    background-color: var(--box-bg-color);
+    background-color: $section-bg-color;
     font-family: var(--font-body);
     align-items: center;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
-    margin: 10px;
     padding: 10px;
-    height:600px;
     text-align: left;
-    width: 48.1%;
-    border-radius: 20px;
+    width: 50%;
+    // border-radius: 20px;
 
     ul {
         line-height: 1.5; 
@@ -221,7 +219,19 @@ nav a:active {
  a:active {
      text-decoration: inherit;
  }
+ #buttons {
+    button:hover, button:focus {
+        color:white;
+        animation: pulse 1s;
+        box-shadow: 0 0 0 2em rgba(#fff,0);
+    }
+ }
 
+ @keyframes pulse {
+     0% {
+         box-shadow: 0 0 0 0 adjust-hue($color: #ef6eae, $degrees: 45);
+     }
+ }
 
 //-----------------------------
 //        class selectors
@@ -233,18 +243,23 @@ nav a:active {
 }
 .player-score, .player-finalScore {
     font-family: inherit;
-    font-size: 5em;
+    font-size: 3em;
 }
 .scoreBox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 60%;
+    width: 65%;
     border: $nav-border;
 }
 .rollBox {
     display: flex;
     align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.computer-panel {
+    background-color: $section-comp-bg-color;
 }
 
 /* 
@@ -261,9 +276,8 @@ nav a:active {
  #buttons {
      display: flex;
      flex-direction: column;
-     position: absolute;
-     right: 525px;
-     top: 550px;
+     position: fixed;
+     top: 600px;
  }
 
  #gameOver-pop-up {

@@ -7,7 +7,7 @@
         <!-- ensure ideal device width detection... -->
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <!-- provides a shortcut icon for the viewport -->
-        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,700;1,300&family=Ubuntu:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
     </header>
 
 <div id="wrapper">
-<h1 id="diceGame">Dice Up</h1>
+<!-- <h1 id="diceGame">Dice Up</h1> -->
     <main>
         
         <section class="player-panel">
@@ -61,14 +61,17 @@
             <div class="scoreBox">
                 <div class="rollBox">
                     You rolled...
-                    <img src="images/dice1.png" alt="value is 1" id="dice1" />
-                    <img src="images/dice2.png" alt="value is 2" id="dice2" />
+                    <img src="images/dice1.png" alt="value is 1" id="dice3" />
+                    <img src="images/dice2.png" alt="value is 2" id="dice4" />
                 </div>
-                <div>Score this round:</div>
-                <div class="player-score" id="compScore">0</div>
-                <div>Total score:</div>
-                <div class="player-finalScore" id="compFinalScore">0</div>
             </div>
+                <div class="scoreBox">
+                    <div>Score this round:</div>
+                    <div class="player-score" id="compScore">0</div>
+                    <div>Total score:</div>
+                    <div class="player-finalScore" id="compFinalScore">0</div>
+                </div>
+            
         </section>
         <div id="buttons">
             <button id="btn-newGame">New Game</button>
