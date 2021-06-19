@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+@import "variables.scss";
+
+//  -----------------
+//   nav header design
+//  -----------------
+
+nav {
+    background-color: $nav-bg-color;
+    color: $nav-font-color;
+    height: 42px;
+    display: none;
+    clear: both;
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    p {
+      text-decoration: none;
+      text-align: right;
+
+    // resize
+      width: 100%;
+
+      display: block;
+    }
+
+    ul {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        align-items: center;
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    a {
+        display: block;
+    }
+}
+
+//-----------------------------
+//    pseudo-class for nav
+//-----------------------------
+
+nav a:link, nav a:visited {
+    text-decoration: none;
+ }
+nav a:hover {
+    transform: scale(1.1);
+    color: #829399;
+ }
+nav li:hover {
+    background-color: #FE6D73;
+ }
+nav a:active {
+    filter: brightness(1.5);
+ }
