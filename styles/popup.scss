@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+@import "variables.scss";
+
+// ID selectors 
+#btn-playAgain {
+    margin-left: 36px;
+    background: $section-comp-bg-color;
+}
+
+#gameOver-pop-up {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index:1000;
+    background-color: rgba(0, 0, 0, 0.705);   
+    button:hover{
+        color: white;
+    }
+
+    div {
+       position: absolute;
+       left: 50%;
+       top: 50%;
+       transform:translate(-50%, -50%);
+  
+      
+       max-width:500px;
+       min-width:300px;
+       padding:10px;
+       border-radius:10px;
+       box-shadow: 0 0 0 2px $section-bg-color,
+                   0 0 0 4px $section-bg-color, 
+                   0 0 0 8px $section-comp-bg-color;
+       background-color: $section-bg-color;
+       color:white;
+       text-align: center;
+    }
+    
+}
+
+#close-pop-up {
+   background: $section-bg-color;
+   color: #fff;
+   font-weight: bold;
+   width: auto;
+
+   cursor:pointer;
+
+   position:absolute;
+   top:-8px;
+   right: -8px;
+}

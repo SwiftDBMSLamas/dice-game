@@ -1,0 +1,29 @@
+@charset "utf-8";
+@import "variables.scss";
+
+/* 
+ -----------------------------
+        media queries
+ -----------------------------
+ */
+// when screen is larger than 931px, hide the btn menu
+ @media screen and (min-width:931px){
+	.btn-menu {
+		display: none;
+	}
+	nav {
+        display: flex;
+    }
+    nav ul{
+        flex-flow: row nowrap;
+    }
+    section img{
+        max-width: 25%;
+    }
+ }
+ // when screen is smaller than 930px
+ @media screen and (max-width: 930px) {
+     footer{
+         display:none;
+     }
+ }

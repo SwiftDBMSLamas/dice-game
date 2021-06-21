@@ -1,20 +1,27 @@
 @charset "utf-8";
 
-// Variables
-// Font Families
-$fontHeader: 'Open Sans', Helvetica, sans-serif;
-$fontFooter: 'Open Sans', Helvetica, sans-serif;
-$fontBody: 'Ubuntu', Baskerville, sans-serif;
+@import "variables.scss";
+@import "footer.scss";
+@import "nav.scss";
+@import "header.scss";
+@import "buttons.scss";
+@import "popup.scss";
+@import "mediaqueries.scss";
 
-// Colours
-$main-bg: #2B303A;
-$nav-bg-color: #898686;
-$font-color: #000;
-$nav-font-color: #000;
-$transparent-bg: rgba(0,0,0,.2);
-$box-bg-color: #00C7BE;
-$nav-border: 1px solid #273043;
-$footer-bg-color: #898686;
+// mixins
+@mixin box-border-with-gradient-background($displayType, $borderRadius, $gradientDirection, $firstColor,
+                                            $secondColor, $border) {
+    display: $displayType;
+    border-radius: $borderRadius;
+    background: linear-gradient(to $gradientDirection, $firstColor, $secondColor);
+    border: $border;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 adjust-hue($color: #ef6eae, $degrees: 45);
+    }
+}
 
 html {
     box-sizing: border-box;
@@ -23,220 +30,144 @@ html {
 * {
     box-sizing: inherit;
 }
-.show {
-	display: block;
-}
-.btn-menu {
-	display: block;
-	background-color: transparent;
-	border: none;
-	font-size: 3rem;
-	color: #9197AE;
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-	right: 6px;
-}
 
-
-header{
-    font-family: $fontHeader;
-    background: $main-bg;
-
-    margin: 0px;
-    padding: 0px;
-
-    display: flex;
-    flex-flow: column nowrap;
-}
-header ul li{
-    list-style-type: none;
-}
-/*  -----------------
-    nav header design
-    -----------------
-*/
-nav{
-    color: $nav-font-color;
-    display: none;
-    clear: both;
-    text-align: center;
-    justify-content: center;
-}
-nav p{
-     background-color: $nav-bg-color;
-
-     text-decoration: none;
-     text-align: right;
-     /* resize */
-     width: 100%;
-     height: 60px;
-     display: block;
-
-     /* fix text */
-     padding-top: 25px;
-     padding-left: 8px;
-}
-nav ul{
-     display: flex;
-     flex-flow: column nowrap;
-     width: 100%;
-     align-items: center;
-     list-style-type: none;
-     padding: 0px;
-     margin: 0px;
-}
-nav a{
-     display: block;
-}
-
-/*  --------------------------
-    Start main body designs
-    --------------------------
-*/
+//  --------------------------
+//   Start main body designs
+//  --------------------------
 h1 {
     text-align: center;
+    margin-right: 45%;
 }
-footer{
-    font-family: $fontFooter;
-    background-color: $footer-bg-color;
-    opacity: 0.8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
-footer h3{
-    font-size: 1.25rem;
-    padding-left: 1px;
-}
-footer ul{
-    display: flex;
-    justify-content: center;
-}
-footer ul li{
-    list-style-type: none;
-    margin-bottom: 10px;
-    padding-right: 5px;
-}
-footer p{
-    font-size: 1.5em;
-}
-footer i{
-    margin: 8px;
-}
-body{
-    margin: 0px;
+
+body {
+    margin: auto;
     background: $main-bg;
     color: $font-color;
+    max-width: 1024px;
 }
-main{
+main {
     font-family: $fontBody;
 
 	display:flex;
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* width: 100%; */
-    min-height:80vh;
-}
-main button {
-    display: block;
-    border-radius: 34px;
-    background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
-    border: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 22px;
-    padding: 20px;
-    width: 200px;
-    margin: 5px;
+    
+    min-height:90vh;
+
+    button {
+        @include box-border-with-gradient-background(block, 13px, right, #2B3648, #56657F, none);
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 22px;
+        padding: 20px;
+        width: 200px;
+        margin: 5px;
+        z-index: 3;
+    }
 }
 
-section{
-    background: linear-gradient(to right, $box-bg-color, #7880b5);
-    background-color: var(--box-bg-color);
-    font-family: var(--font-body);
-    align-items: center;
+section {
+    background-color: $section-bg-color;
+    font-family: $fontBody;
+    align-items: flex-start;
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-around;
-    margin: 10px;
+    justify-content: center;
     padding: 10px;
     text-align: left;
-    width: 48.1%;
-    border-radius: 20px;
+    width: 48%;
+    border: 5.33788px solid #000000;
+    border-radius: 32px;
+    box-shadow: 10.6758px 10.6758px 0px #000000, 0px 5.33788px 5.33788px rgba(0, 0, 0, 0.25);
+    z-index: 0;
+
+    ul {
+        line-height: 1.5; 
+    }
+
+    img {
+        max-width: 40%;
+        height: auto;
+    }
 }
-section ul{
+p {
     line-height: 1.5;
 }
-p{
-    line-height: 1.5;
-    /* max-width: 1100px; */
-}
-img{
+img {
 	max-width: 100%;
 	height: auto;
 }
-section img{
-    max-width: 40%;
-    height: auto;
-    float: left;
-}
-
-button{
+button {
     cursor: pointer;
 }
 
+//-----------------------------
+//        pseudo-class
+//-----------------------------
 
-/* 
------------------------------
-        pseudo-class
------------------------------
- */
-nav a:link, nav a:visited{
+a:link {
     text-decoration: none;
- }
-nav a:hover{
-    transform: scale(1.1);
-    color: #829399;
- }
-nav li:hover{
-    background-color: #FE6D73;
- }
-nav a:active{
-    filter: brightness(1.5);
- }
- a:link{
-     text-decoration: none;
-     color: inherit;
- }
- a:visited{
-     color: inherit;
- }
- a:hover{
-     color:#fff;
- }
- a:active{
-     text-decoration: inherit;
- }
-
- /* 
------------------------------
-        class selectors
------------------------------
- */
+    color: inherit;
+}
+a:visited {
+    color: inherit;
+}
+a:hover {
+    color:#fff;
+}
+a:active {
+    text-decoration: inherit;
+}
+ 
+//-----------------------------
+//        class selectors
+//-----------------------------
 
 .player-name {
-    font-family: var(--font-header);
-    font-size: 5em;
+    font-family: $fontHeader;
+    font-size: 3em;
+    position: static;
+    margin-left: 35px;
+    background: $section-bg-color;
+    border: 7.73399px solid #000000;
+    box-shadow: 0px 3.867px 0px #000000;
+    border-radius: 16.757px;
+    transform: rotate(-8.16deg);
+    width: 400px;
+    text-align: center;
 }
 .player-score, .player-finalScore {
     font-family: inherit;
-    font-size: 5em;
+    font-size: 2em;
+}
+.scoreBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    font-size: 1.5em;
+    margin-top: 150px;
+    
+}
+.totalScore {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    background-color: $score-box-color;
+    border-radius: 10px;
+}
+.rollBox {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+.computer-panel {
+    background-color: $section-comp-bg-color;
 }
 
 /* 
@@ -245,88 +176,33 @@ nav a:active{
 -----------------------------
  */
 
- #wrapper{
-	max-width:100%;
-	min-height:70vh;
- }
-
- #buttons {
-     display: flex;
-     flex-direction: column;
-    
- }
-
- #gameOver-pop-up{
-     position: fixed;
-     top: 0px;
-     left: 0px;
-     width: 100vw;
-     height: 100vh;
-     z-index:1000;
-     background-color: rgba(0, 0, 0, 0.705);   
- }
-
- #gameOver-pop-up div{
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     transform:translate(-50%, -50%);
-
-     /* basic box model stuff*/
-	max-width:500px;
-	min-width:300px;
-	padding:10px;
-	border-radius:10px;
-	box-shadow: 0 0 0 2px rgb(145, 197, 199),
-		        0 0 0 4px cadetblue, 
-				0 0 0 8px rgb(39, 103, 105);;
-	background-color: cadetblue;
-	color:white;
- }
-
- #close-pop-up{
-	background-color: white;
-	color:cadetblue;
-	color: #000;
-	font-weight: bold;
-	border:solid 3px rgb(39, 103, 105);
-	/*
-	make a 'hand' pointer icon appear on mouseover
-	otherwise it will just be the usual mouse cursor arrow
-	*/
-	cursor:pointer;
-	/*
-	stick this X button in the 
-	top right corner of the popup
-	*/
-	position:absolute;
-	top:-380px;
-	right:-380px;
+#wrapper {
+	min-height:90vh;
 }
-
- #go-back {
+#compName {
+    position: static;
+    margin-left: 50px;
+    background: $section-comp-bg-color;
+    border: 7.73399px solid #000000;
+    box-shadow: 0px 3.867px 0px #000000;
+    border-radius: 16.757px;
+    transform: rotate(8.16deg);
+}
+#go-back {
     display: block;
-	background-color: #898686;
+	background-color: $nav-bg-color;
     border: none;
     font-size: 2em;
+    height:40px;
+    border-radius: 5px;
  }
- /* 
- -----------------------------
-        media queries
- -----------------------------
- */
-
-@media screen and (min-width:931px){
-	.btn-menu {
-		display: none;
-	}
-	nav {
-        display: flex;
-    }
-    nav ul{
-        flex-flow: row nowrap;
-    }
-    section img{
-        max-width: 25%;
-    }  
+ 
+ #round {
+     display: block;
+     position: fixed;
+     top: 30%;
+     left: 44%;
+     z-index: 5;
+     @include box-border-with-gradient-background(block, 5px, right, $section-comp-bg-color, $section-bg-color, 1px solid #000);
+     font-size: 2em;
  }

@@ -1,0 +1,40 @@
+@charset "utf-8";
+@import "variables.scss";
+
+footer {
+    font-family: $fontFooter;
+    background-color: $footer-bg-color;
+    opacity: 0.8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 1024px;
+    margin: auto;
+    z-index: 2;
+    border-radius: 5px;
+
+    h3 {
+        font-size: 1.25rem;
+        padding-left: 1px;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    i {
+        margin: 8px;
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+
+        li {
+            list-style-type: none;
+            margin-bottom: 10px;
+            padding-right: 5px;
+        }
+    }
+}

@@ -2,12 +2,12 @@
 <html lang="en">
     <!-- author: allan aranzaso -->
     <head>
-        <title>Dice Up!</title>
+        <title>Game of Dice</title>
         <meta charset="utf-8" />
         <!-- ensure ideal device width detection... -->
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <!-- provides a shortcut icon for the viewport -->
-        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,700;1,300&family=Ubuntu:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
@@ -24,48 +24,71 @@
         <button class="btn-menu"><i class="fas fa-bars"></i></button>
         <nav>
             <button id="go-back"><i class="fas fa-chevron-left"></i></button>
-            <p id="dateTime"></p>
+            <h1>Let's roll!</h1>
         </nav>
     </header>
 
 <div id="wrapper">
-<h1 id="diceGame">Dice Up</h1>
     <main>
-        
+        <!-- Human player section -->
         <section class="player-panel">
-            <div class="player-name" id="playerName">Player 1</div>
-            <div class="player-score" id="playerScore">0</div>
-            <div class="player-finalScore" id='playerFinalScore'>0</div>
+            <h2 class="player-name" id="playerName"><span id="playerDisplay">Player 1</span></h2>
+            
+            <div class="scoreBox"> 
+                <span id="playerRoll">Welcome!</span>
+                <div class="rollBox">
+                    <img src="images/dice1.png" alt="value is 1" id="dice1" />
+                    <img src="images/dice2.png" alt="value is 2" id="dice2" />
+                </div>
+            </div>
+            <div class="scoreBox totalScore">
+                <div>Score this round:</div>
+                <div class="player-score" id="playerScore">--</div>
+                <div>Total score:</div>
+                <div class="player-finalScore" id='playerFinalScore'>0</div>
+            </div>
         </section>
+        <!-- Game over pop up -->
         <div id="gameOver-pop-up">
             <div>
-                <button id="close-pop-up">&#x2715</button>
-                <h2 id="gameOver-winner-h2">And the winner is...</h2>
+                <button id="close-pop-up">&#x2715;</button>
+                <h2 id="gameOver-winner-h2">xx wins!</h2>
                 <button id="btn-playAgain">Play Again</button>
             </div>
         </div>
+        <!-- Computer section -->
         <section class="computer-panel">
-            <div class="player-name" id="compName">Computer</div>
-            <div class="player-score" id="compScore">0</div>
-            <div class="player-finalScore" id="compFinalScore">0</div>
+            <h2 class="player-name" id="compName">Computer</h2>
+            <div class="scoreBox">
+                <span id="compRoll">Ready to roll?</span>
+                <div class="rollBox">
+                    <img src="images/dice1.png" alt="value is 1" id="dice3" />
+                    <img src="images/dice2.png" alt="value is 2" id="dice4" />
+                </div>
+            </div>
+                <div class="scoreBox totalScore">
+                    <div>Score this round:</div>
+                    <div class="player-score" id="compScore">--</div>
+                    <div>Total score:</div>
+                    <div class="player-finalScore" id="compFinalScore">0</div>
+                </div>
         </section>
+        <aside>
+            <div id="round">Round: --</div>
+        </aside>
+        <!-- Game buttons -->
         <div id="buttons">
             <button id="btn-newGame">New Game</button>
-        <button id="btn-rollDice" disabled>Roll Dice</button>
+            <button id="btn-rollDice" disabled>Roll Dice</button>
+            <button id="btn-resetGame" disabled>Reset Game</button>
         </div>
-        
     </main>
     
-    
     <footer>
-
         <ul>
-            <li><i class="fas fa-info"></i> <a href="help.html">Help</a></li> 
+            <li>COMP 2132</li> 
         </ul>
     </footer>
 </div>
-
-
-
 </body>
 </html>
