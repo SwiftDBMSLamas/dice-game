@@ -2,15 +2,13 @@
 
 @import "variables.scss";
 @import "footer.scss";
-@import "dicebg.scss";
 @import "nav.scss";
 @import "header.scss";
 @import "buttons.scss";
 @import "popup.scss";
 @import "mediaqueries.scss";
-// todo:
-// make responsive if time allows
-// test UI make sure it functions as it should
+
+// mixins
 @mixin box-border-with-gradient-background($displayType, $borderRadius, $gradientDirection, $firstColor,
                                             $secondColor, $border) {
     display: $displayType;
@@ -38,6 +36,7 @@ html {
 //  --------------------------
 h1 {
     text-align: center;
+    margin-right: 45%;
 }
 
 body {
@@ -127,7 +126,7 @@ a:active {
 
 .player-name {
     font-family: $fontHeader;
-    font-size: 5em;
+    font-size: 3em;
     position: static;
     margin-left: 35px;
     background: $section-bg-color;
@@ -178,7 +177,7 @@ a:active {
  */
 
 #wrapper {
-	min-height:70vh;
+	min-height:90vh;
 }
 #compName {
     position: static;
@@ -198,3 +197,12 @@ a:active {
     border-radius: 5px;
  }
  
+ #round {
+     display: block;
+     position: fixed;
+     top: 30%;
+     left: 44%;
+     z-index: 5;
+     @include box-border-with-gradient-background(block, 5px, right, $section-comp-bg-color, $section-bg-color, 1px solid #000);
+     font-size: 2em;
+ }

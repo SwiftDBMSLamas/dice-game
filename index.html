@@ -2,7 +2,7 @@
 <html lang="en">
     <!-- author: allan aranzaso -->
     <head>
-        <title>Dice Up!</title>
+        <title>Game of Dice</title>
         <meta charset="utf-8" />
         <!-- ensure ideal device width detection... -->
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -24,16 +24,15 @@
         <button class="btn-menu"><i class="fas fa-bars"></i></button>
         <nav>
             <button id="go-back"><i class="fas fa-chevron-left"></i></button>
-            <p id="dateTime"></p>
+            <h1>Let's roll!</h1>
         </nav>
     </header>
 
 <div id="wrapper">
-<!-- <h1 id="diceGame">Dice Up</h1> -->
     <main>
         <!-- Human player section -->
         <section class="player-panel">
-            <div class="player-name" id="playerName"><span id="playerDisplay">Player 1</span></div>
+            <h2 class="player-name" id="playerName"><span id="playerDisplay">Player 1</span></h2>
             
             <div class="scoreBox"> 
                 <span id="playerRoll">Welcome!</span>
@@ -52,16 +51,16 @@
         <!-- Game over pop up -->
         <div id="gameOver-pop-up">
             <div>
-                <button id="close-pop-up">&#x2715</button>
-                <h2 id="gameOver-winner-h2"></h2>
+                <button id="close-pop-up">&#x2715;</button>
+                <h2 id="gameOver-winner-h2">xx wins!</h2>
                 <button id="btn-playAgain">Play Again</button>
             </div>
         </div>
         <!-- Computer section -->
         <section class="computer-panel">
-            <div class="player-name" id="compName">Computer</div>
+            <h2 class="player-name" id="compName">Computer</h2>
             <div class="scoreBox">
-                <span id="compRoll">Ready for a computer to beat you?</span>
+                <span id="compRoll">Ready to roll?</span>
                 <div class="rollBox">
                     <img src="images/dice1.png" alt="value is 1" id="dice3" />
                     <img src="images/dice2.png" alt="value is 2" id="dice4" />
@@ -74,24 +73,15 @@
                     <div class="player-finalScore" id="compFinalScore">0</div>
                 </div>
         </section>
+        <aside>
+            <div id="round">Round: --</div>
+        </aside>
         <!-- Game buttons -->
         <div id="buttons">
             <button id="btn-newGame">New Game</button>
             <button id="btn-rollDice" disabled>Roll Dice</button>
             <button id="btn-resetGame" disabled>Reset Game</button>
         </div>
-        <!-- Dice decor -->
-    <div class="diceDisplayLeft">
-        <div id=""><i class="fas fa-dice-six"></i></div>
-        <div id="five"><i class="fas fa-dice-five"></i></div>
-        <div id="four"><i class="fas fa-dice-four"></i></div>
-        <div id="three"><i class="fas fa-dice-three"></i></div>
-        <div id="two"><i class="fas fa-dice-two"></i></div>
-        <div id="one"><i class="fas fa-dice-one"></i></div>
-    </div>
-    <span class="diceDisplayRight">
-        <div id="oneRight"><i class="fas fa-dice-five"></i></div>
-    </span>
     </main>
     
     <footer>

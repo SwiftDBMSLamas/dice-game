@@ -2,63 +2,58 @@
     author: Allan Aranzaso
 */
 //gather document elements
-const btnNewGame        = document.getElementById('btn-newGame');
-const btnRollDice       = document.getElementById('btn-rollDice');
-const btnPlayAgain      = document.getElementById('btn-playAgain');
-const btnResetGame      = document.getElementById('btn-resetGame');
-const btnClosePopUp     = document.getElementById('close-pop-up');
-const currentDate       = document.getElementById("dateTime");
-const playerName        = document.getElementById('playerName');
-const playerScore       = document.getElementById('playerScore');
-const playerFinalScore  = document.getElementById('playerFinalScore');
-const compFinalScore    = document.getElementById('compFinalScore');
-const compScore         = document.getElementById('compScore');
-const prevPage          = document.getElementById("go-back");
-const popup             = document.getElementById('gameOver-pop-up');
-const popupWinner       = document.getElementById('gameOver-winner-h2');
-const diceImg1          = document.getElementById('dice1');
-const diceImg2          = document.getElementById('dice2');
-const diceImgComp1      = document.getElementById('dice3');
-const diceImgComp2      = document.getElementById('dice4');
-const playerRolled      = document.getElementById('playerRoll');
-const compRolled        = document.getElementById('compRoll');
+const btnNewGame            = document.getElementById('btn-newGame');
+const btnRollDice           = document.getElementById('btn-rollDice');
+const btnPlayAgain          = document.getElementById('btn-playAgain');
+const btnResetGame          = document.getElementById('btn-resetGame');
+const btnClosePopUp         = document.getElementById('close-pop-up');
+const playerName            = document.getElementById('playerName');
+const playerCurrentScore    = document.getElementById('playerScore');
+const playerFinalScore      = document.getElementById('playerFinalScore');
+const compFinalScore        = document.getElementById('compFinalScore');
+const compCurrentScore      = document.getElementById('compScore');
+const prevPage              = document.getElementById("go-back");
+const popup                 = document.getElementById('gameOver-pop-up');
+const popupWinner           = document.getElementById('gameOver-winner-h2');
+const diceImg1              = document.getElementById('dice1');
+const diceImg2              = document.getElementById('dice2');
+const diceImgComp1          = document.getElementById('dice3');
+const diceImgComp2          = document.getElementById('dice4');
+const playerRolled          = document.getElementById('playerRoll');
+const compRolled            = document.getElementById('compRoll');
+const roundNumber           = document.getElementById('round');
 
-const timeNow           = new Date();
-const popupDelay        = 150;
-const windowDelay       = 200;
-const maxVal            = 6;
-const defaultScore      = 0;
-const lastRound         = 3;
-const fadeDelay         = 50;
-const minOpacity        = 0.1;
-const maxOpacity        = 1;
-const opacityFactor     = 0.1;
-
-currentDate.innerHTML += `${timeNow.toDateString()}`;
+const popupDelay            = 150;
+const windowDelay           = 200;
+const maxDiceVal            = 6;
+const defaultScore          = 0;
+const lastRound             = 3;
+const fadeDelay             = 50;
+const minOpacity            = 0.1;
+const maxOpacity            = 1;
+const opacityFactor         = 0.1;
 
 // hides the popup until game is over
-popup.style.display = 'none';
-btnRollDice.style.cursor = "default";
-btnResetGame.style.cursor = "default";
+popup.style.display         = 'none';
+btnRollDice.style.cursor    = "default";
+btnResetGame.style.cursor   = "default";
 
 //todo: refactor code to remove global variables
-let gameRound = 0;
+let gameRound           = 0;
+let playerTurn          = true;
 let humanPlayer;
 let computerPlayer;
 let computerTurn;
-let playerTurn = true;
 
-let totalScore = 0;
-let compTotalScore = 0;
-let turnInterval;
-let opaque = 0.1;
-let opFadeOut = 1;
-let timeoutHandler;
+let totalScore          = 0;
+let compTotalScore      = 0;
+let opaque              = 0.1;
+let opFadeOut           = 1;
 
 
 class Dice {
     constructor(){
-        this.value  = Math.floor(Math.random() * 6) + 1;
+        this.value = Math.floor(Math.random() * 6) + 1;
     }
 }
 
@@ -67,19 +62,21 @@ class Player {
         this.name = name;
     }
     rollDice( firstRoll, secondRoll ){
-        let score = getScore(firstRoll, secondRoll);
+        //store the score for the player's round
+        let scoreForRound = getScore(firstRoll, secondRoll);
+
         diceImg1.src = `images/dice${firstRoll.value}.png`;
         diceImg2.src = `images/dice${secondRoll.value}.png`;
         
         //display current rolled dice score
-        playerScore.textContent = score;
+        playerCurrentScore.textContent   = scoreForRound;
         //add and display the total score for the game so far
-        totalScore += score;
-        playerFinalScore.textContent = totalScore;
+        totalScore                      += scoreForRound;
+        playerFinalScore.textContent     = totalScore;
 
         //end turn
         endPlayerTurn(true);
-        const consoleLogMsg = `${this.name}\'s roll was: ${firstRoll.value}, ${secondRoll.value} for a total of: ${score} points`;
+        const consoleLogMsg = `${this.name}\'s roll was: ${firstRoll.value}, ${secondRoll.value} for a total of: ${scoreForRound} points`;
         console.log(consoleLogMsg);
     }
 }
@@ -87,27 +84,25 @@ class Player {
 class Computer {
     rollDice( firstRoll, secondRoll ){
 
-        let score = getScore(firstRoll, secondRoll);
-        diceImgComp1.src = `images/dice${firstRoll.value}.png`;
-        diceImgComp2.src = `images/dice${secondRoll.value}.png`;
+        let scoreForRound   = getScore(firstRoll, secondRoll);
+        diceImgComp1.src    = `images/dice${firstRoll.value}.png`;
+        diceImgComp2.src    = `images/dice${secondRoll.value}.png`;
 
         //display current rolled dice score
-        compScore.textContent = score;
+        compCurrentScore.textContent = scoreForRound;
 
         //add and display the total score for the game so far
-        compTotalScore += score;
-        compFinalScore.textContent = compTotalScore;
+        compTotalScore              += scoreForRound;
+        compFinalScore.textContent   = compTotalScore;
         //end turn
         gameRound++;
         endPlayerTurn(false);
 
         if(gameRound === lastRound){
-            const gameRdConsolMsg = `Round: ${gameRound}`;
-            console.log(gameRdConsolMsg);
             playerTurn = false;
             getWinner();
         }
-        const consoleLogMsg = `Computer\'s roll was: ${firstRoll.value}, ${secondRoll.value} for a total of: ${score}`;
+        const consoleLogMsg = `Computer\'s roll was: ${firstRoll.value}, ${secondRoll.value} for a total of: ${scoreForRound}`;
         console.log(consoleLogMsg);
     }
 }
@@ -139,21 +134,24 @@ function getWinner() {
         fadeIn();
     }, popupDelay);
     
-    const computerWinsMsg = "Computer wins!";
-    const tieMsg          = "It's a tie!";
-    const playerWinsMsg   = `${playerName.textContent} wins!`;
+    const computerWinsMsg           = "Computer wins!";
+    const tieMsg                    = "It's a tie!";
+    const playerWinsMsg             = `You win!`;
+    const computerFinalScoreInt     = parseInt(compFinalScore.textContent);
+    const playerFinalScoreInt       = parseInt(playerFinalScore.textContent);
+
     // allow the fade in to come first
     setTimeout(() => {
         popup.style.display = 'block';
-        if(compFinalScore.textContent > playerFinalScore.textContent){
+        if(computerFinalScoreInt > playerFinalScoreInt){
             popupWinner.textContent = computerWinsMsg;
-        }else if(compFinalScore.textContent === playerFinalScore.textContent){
+        }else if(computerFinalScoreInt == playerFinalScoreInt){
             popupWinner.textContent = tieMsg;
-        }else{
+        }else if(computerFinalScoreInt < playerFinalScoreInt){
             popupWinner.textContent = playerWinsMsg;
         } 
     }, windowDelay);
-    buttonState(btnRollDice, false);
+    buttonStateEnabled(btnRollDice, false);
 };
 
 //
@@ -167,15 +165,15 @@ btnNewGame.addEventListener('click', function(){
     if(nameOfPlayerPrompt.length === 0){
         nameOfPlayerPrompt = window.prompt(errorNameMsg);
     }
-    
     playerName.innerHTML = nameOfPlayerPrompt;
-    //create the player objects when user clicks button
+
+    //create the objects when user clicks button
     humanPlayer = new Player(nameOfPlayerPrompt);
     computerPlayer = new Computer();
 
-    buttonState(btnRollDice, true);
-    buttonState(btnResetGame, true);
-    buttonState(btnNewGame, false);
+    buttonStateEnabled(btnRollDice, true);
+    buttonStateEnabled(btnResetGame, true);
+    buttonStateEnabled(btnNewGame, false);
 });
 
 btnRollDice.addEventListener('click', function(){
@@ -184,11 +182,8 @@ btnRollDice.addEventListener('click', function(){
     if(humanPlayer === undefined){
         alert(alertbtnMsg);
     }
-    // change button text to reset game
-    btnNewGame.disabled = false;
-    btnResetGame.disabled = false;
-    btnNewGame.style.cursor = "pointer";
-
+    buttonStateEnabled(btnNewGame, false);
+    buttonStateEnabled(btnResetGame, true);
     takeTurns(); 
 });
 
@@ -203,21 +198,21 @@ btnPlayAgain.addEventListener('click', function(){
 
 btnClosePopUp.addEventListener('click', function(){
     fadeOut();
-    buttonState(btnRollDice, true);
+    buttonStateEnabled(btnRollDice, true);
 });
-function rotateTheDice(){
-    // maybe add an animation to rotate the dice after game over for added effect?
-}
-function buttonState(btnID, isEnabled) {
+// function that allows you to set the button state to disabled or enabled
+// must have retrieved the button ID from the DOM first using getElementByID
+function buttonStateEnabled(btnID, isEnabled) {
     if(isEnabled){
-        btnID.disabled = false;
-        btnID.style.cursor = "pointer";
+        btnID.disabled      = false;
+        btnID.style.cursor  = "pointer";
         return;
     }
-    btnID.disabled = true;
-    btnID.style.cursor = "default";
+    btnID.disabled      = true;
+    btnID.style.cursor  = "default";
 }
-
+// flags whose turn it is
+// passes in boolean- isTurnOver. True if player turn is over. Otherwise false.
 function endPlayerTurn(isTurnOver){
     if(isTurnOver){
         playerTurn = false;
@@ -227,6 +222,7 @@ function endPlayerTurn(isTurnOver){
     playerTurn = true;
     computerTurn = false;
 }
+// rotates turns between player and computer
 function takeTurns(){
 
     let firstDie = new Dice();
@@ -236,29 +232,18 @@ function takeTurns(){
 
     const displayGameRound = `Round: ${gameRound + 1}`
     const youRolled        = `You rolled`;
-    const compRolled       = `Computer rolled`;
+    const compRolledMsg    = `Computer rolled`;
+
+    roundNumber.textContent = displayGameRound;
+
     //rotate player turns
     if(playerTurn){
-        compRolled.textContent = displayGameRound;
         humanPlayer.rollDice(firstDie, secondDie);
         playerRolled.textContent = youRolled;
     }else if(computerTurn){
-        playerRolled.textContent = displayGameRound;
         computerPlayer.rollDice(thirdDie, fourthDie);
-        compRolled.textContent = compRolled;
+        compRolled.textContent = compRolledMsg;
     }
-};
-
-// Reset the game to default values
-function resetTheGame(){
-    gameRound = 0;
-    playerFinalScore.textContent = defaultScore;
-    compFinalScore.textContent = defaultScore;
-    playerScore.textContent = defaultScore;
-    compScore.textContent = defaultScore;
-    playerName.textContent = "Player 1";
-    playerTurn = true;
-    btnNewGame.textContent = "New Game";
 };
 
 prevPage.addEventListener('click', function(){

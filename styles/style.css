@@ -46,98 +46,6 @@ footer ul li {
   padding-right: 5px;
 }
 
-.diceDisplayLeft {
-  position: absolute;
-  width: 114.75px;
-  height: 114.75px;
-  left: 1805.78px;
-  top: 232.78px;
-  color: #0FA958;
-  border-radius: 11.7093px;
-  -webkit-transform: rotate(-174deg);
-          transform: rotate(-174deg);
-  font-size: 5.5em;
-  position: absolute;
-  width: 84.31px;
-  height: 84.31px;
-  left: 5.57px;
-  top: 700.39px;
-  z-index: -1;
-  transform: rotate(-174deg);
-}
-
-.diceDisplayRight {
-  position: absolute;
-  width: 114.75px;
-  height: 114.75px;
-  left: 1805.78px;
-  top: 232.78px;
-  color: #0FA958;
-  border-radius: 11.7093px;
-  -webkit-transform: rotate(-174deg);
-          transform: rotate(-174deg);
-  font-size: 5.5em;
-  position: absolute;
-  width: 84.31px;
-  height: 84.31px;
-  left: 1000px;
-  top: 720.39px;
-  z-index: -1;
-  transform: rotate(-174deg);
-}
-
-#five {
-  color: #699BF7;
-  -webkit-transform: rotate(-325deg);
-          transform: rotate(-325deg);
-  -webkit-transform: translateX(-70%);
-          transform: translateX(-70%);
-}
-
-#four {
-  color: #C7B9FF;
-  position: relative;
-  left: -1004px;
-  top: 200px;
-  -webkit-transform: rotate(-221deg);
-          transform: rotate(-221deg);
-}
-
-#three {
-  color: #FFC700;
-  position: relative;
-  left: 40px;
-  bottom: 15px;
-  -webkit-transform: rotate(275deg);
-          transform: rotate(275deg);
-}
-
-#two {
-  color: #FF8577;
-  position: relative;
-  left: 50px;
-  top: 80px;
-  -webkit-transform: rotate(251deg);
-          transform: rotate(251deg);
-}
-
-#one {
-  color: #fff;
-  position: absolute;
-  left: 70px;
-  top: 625px;
-  -webkit-transform: rotate(301deg);
-          transform: rotate(301deg);
-}
-
-#oneRight {
-  color: #fff;
-  position: absolute;
-  top: 600px;
-  -webkit-transform: rotate(301deg);
-          transform: rotate(301deg);
-}
-
 nav {
   background-color: #FFC700;
   color: #000;
@@ -145,9 +53,12 @@ nav {
   display: none;
   clear: both;
   text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 5px;
 }
 
@@ -203,6 +114,7 @@ header {
   background: #212936;
   margin: 0px;
   padding: 0px;
+  opacity: 0.8;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,7 +178,7 @@ header ul li {
 }
 
 #btn-resetGame {
-  margin-top: 70%;
+  margin-top: 40%;
 }
 
 #btn-playAgain {
@@ -341,6 +253,12 @@ header ul li {
   }
 }
 
+@media screen and (max-width: 930px) {
+  footer {
+    display: none;
+  }
+}
+
 @-webkit-keyframes pulse {
   0% {
     -webkit-box-shadow: 0 0 0 0 #ef8f6e;
@@ -368,6 +286,7 @@ html {
 
 h1 {
   text-align: center;
+  margin-right: 45%;
 }
 
 body {
@@ -475,7 +394,7 @@ a:active {
 
 .player-name {
   font-family: "Open Sans", Helvetica, sans-serif;
-  font-size: 5em;
+  font-size: 3em;
   position: static;
   margin-left: 35px;
   background: #FF8577;
@@ -554,7 +473,7 @@ a:active {
 -----------------------------
  */
 #wrapper {
-  min-height: 70vh;
+  min-height: 90vh;
 }
 
 #compName {
@@ -576,4 +495,18 @@ a:active {
   font-size: 2em;
   height: 40px;
   border-radius: 5px;
+}
+
+#round {
+  display: block;
+  position: fixed;
+  top: 30%;
+  left: 44%;
+  z-index: 5;
+  display: block;
+  border-radius: 5px;
+  background: -webkit-gradient(linear, left top, right top, from(#C7B9FF), to(#FF8577));
+  background: linear-gradient(to right, #C7B9FF, #FF8577);
+  border: 1px solid #000;
+  font-size: 2em;
 }
