@@ -24,7 +24,7 @@
         <button class="btn-menu"><i class="fas fa-bars"></i></button>
         <nav>
             <button id="go-back"><i class="fas fa-chevron-left"></i></button>
-            <h1>Let's roll!</h1>
+            <h1>Game of Dice</h1>
         </nav>
     </header>
 
@@ -32,13 +32,13 @@
     <main>
         <!-- Human player section -->
         <section class="player-panel">
-            <h2 class="player-name" id="playerName"><span id="playerDisplay">Player 1</span></h2>
+            <h2 class="player-name" id="playerName"><div id="playerDisplay">Player 1</div></h2>
             
             <div class="scoreBox"> 
-                <span id="playerRoll">Welcome!</span>
+                <div id="playerRoll">Welcome!</div>
                 <div class="rollBox">
-                    <img src="images/dice1.png" alt="value is 1" id="dice1" />
-                    <img src="images/dice2.png" alt="value is 2" id="dice2" />
+                    <img src="images/dice1.png" alt="your first dice" id="dice1" />
+                    <img src="images/dice2.png" alt="your second dice" id="dice2" />
                 </div>
             </div>
             <div class="scoreBox totalScore">
@@ -60,10 +60,10 @@
         <section class="computer-panel">
             <h2 class="player-name" id="compName">Computer</h2>
             <div class="scoreBox">
-                <span id="compRoll">Ready to roll?</span>
+                <div id="compRoll">Ready to roll?</div>
                 <div class="rollBox">
-                    <img src="images/dice1.png" alt="value is 1" id="dice3" />
-                    <img src="images/dice2.png" alt="value is 2" id="dice4" />
+                    <img src="images/dice1.png" alt="the computer\'s first dice" id="dice3" />
+                    <img src="images/dice2.png" alt="the computer\'s second dice" id="dice4" />
                 </div>
             </div>
                 <div class="scoreBox totalScore">
@@ -73,9 +73,9 @@
                     <div class="player-finalScore" id="compFinalScore">0</div>
                 </div>
         </section>
-        <aside>
+        <div>
             <div id="round">Round: --</div>
-        </aside>
+        </div>
         <!-- Game buttons -->
         <div id="buttons">
             <button id="btn-newGame">New Game</button>

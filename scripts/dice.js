@@ -38,7 +38,6 @@ popup.style.display         = 'none';
 btnRollDice.style.cursor    = "default";
 btnResetGame.style.cursor   = "default";
 
-//todo: refactor code to remove global variables
 let gameRound           = 0;
 let playerTurn          = true;
 let humanPlayer;
@@ -159,11 +158,12 @@ function getWinner() {
 //
 btnNewGame.addEventListener('click', function(){
     const enterNameMsg     = `Please enter your name`;
-    const errorNameMsg     = `Field cannot be empty`;
+    const errorNameMsg     = `Field cannot be empty. Please click new game to try again`;
     let nameOfPlayerPrompt = window.prompt(enterNameMsg);
     
     if(nameOfPlayerPrompt.length === 0){
-        nameOfPlayerPrompt = window.prompt(errorNameMsg);
+        alert(errorNameMsg);
+        return;
     }
     playerName.innerHTML = nameOfPlayerPrompt;
 
@@ -181,6 +181,7 @@ btnRollDice.addEventListener('click', function(){
     const alertbtnMsg = `Please click new game first!`;
     if(humanPlayer === undefined){
         alert(alertbtnMsg);
+        return;
     }
     buttonStateEnabled(btnNewGame, false);
     buttonStateEnabled(btnResetGame, true);
@@ -198,7 +199,7 @@ btnPlayAgain.addEventListener('click', function(){
 
 btnClosePopUp.addEventListener('click', function(){
     fadeOut();
-    buttonStateEnabled(btnRollDice, true);
+    buttonStateEnabled(btnRollDice, false);
 });
 // function that allows you to set the button state to disabled or enabled
 // must have retrieved the button ID from the DOM first using getElementByID
